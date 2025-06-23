@@ -1,0 +1,79 @@
+{
+	"info": {
+		"_postman_id": "01f37918-9c04-473f-ba62-e9c927372df4",
+		"name": "mock-svc-apis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14323975"
+	},
+	"item": [
+		{
+			"name": "receive_data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n  {\r\n    \"name\": \"Emil\",\r\n    \"position\": \"GK\",\r\n    \"age\": 28,\r\n    \"team\": \"Strelcha FC\",\r\n    \"country\": \"Bulgaria\"\r\n  }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "/api/v1/data/receive",
+					"path": [
+						"api",
+						"v1",
+						"data",
+						"receive"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "receive_data",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"name\": \"Emil\",\r\n    \"position\": \"GK\",\r\n    \"age\": 28,\r\n    \"team\": \"Strelcha FC\",\r\n    \"country\": \"Bulgaria\"\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/api/v1/data/receive",
+							"path": [
+								"api",
+								"v1",
+								"data",
+								"receive"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date"
+						}
+					],
+					"body": "{ \"status\": \"RECEIVE\" }"
+				}
+			]
+		}
+	]
+}
