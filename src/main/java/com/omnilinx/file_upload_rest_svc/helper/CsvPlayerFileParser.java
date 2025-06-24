@@ -11,7 +11,6 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Component
 @Slf4j
@@ -21,6 +20,8 @@ public class CsvPlayerFileParser implements FileParser<PlayerDto> {
     @Override
     public List<PlayerDto> parse(byte[] content) {
         List<PlayerDto> playerDtos = new ArrayList<>();
+
+        // TODO: Extract read logic into some CustomReader class
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader((new ByteArrayInputStream(content)), StandardCharsets.UTF_8))) {
 

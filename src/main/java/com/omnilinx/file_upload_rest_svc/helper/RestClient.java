@@ -26,6 +26,7 @@ public class RestClient {
     }
 
     public void send(List<PlayerDto> players) {
+        // TODO: Use Schedule for more control
         if (timeIntervalDispatcher.isWithinAllowedTimeInterval()) {
             try {
                 log.info("Sending players info to mock server: {}", url);
