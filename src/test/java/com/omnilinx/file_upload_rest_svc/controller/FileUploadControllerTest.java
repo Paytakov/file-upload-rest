@@ -70,12 +70,12 @@ class FileUploadControllerTest {
     }
 
     @Test
-    void testUploadFile_ioException() throws Exception {
+    void testUploadFileShouldThrowIoException() throws Exception {
        // TODO:
     }
 
     @Test
-    void testUploadFileShouldReturnInternalServerResponse() throws Exception {
+    void testUploadFileShouldReturnInternalServerErrorResponse() throws Exception {
         doThrow(new RuntimeException("fail")).when(fileProcessingService).enqueueFileForProcessing(any());
 
         mockMvc.perform(multipart(API_ENDPOINT).file(testCsvFile))

@@ -21,7 +21,7 @@ public class RabbitListenerConfiguration {
         factory.setConnectionFactory(connectionFactory);
         factory.setMessageConverter(messageConverter);
 
-        // TODO: Add the failed message to DLM? -> read more about the topic
+        // TODO: Add the failed message to DLQ (Non-blocking Way) ? -> read more about the topic
         factory.setAdviceChain(
                 RetryInterceptorBuilder.stateless()
                         .maxAttempts(RabbitMQConstants.MAX_ATTEMPTS_COUNT)

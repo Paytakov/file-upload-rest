@@ -35,7 +35,6 @@ public class RestCallTimeIntervalDispatcher {
     private boolean validate(TimeInterval timeInterval) {
         log.info("Validating for allowed time window for sending.");
         log.info("Now: {} | Allowed: {} - {}", timeInterval.now(), timeInterval.beginTime(), timeInterval.endTime());
-
         if (timeInterval.beginTime().isBefore(timeInterval.endTime())) {
             return !timeInterval.now().isBefore(timeInterval.beginTime())
                     && !timeInterval.now().isAfter(timeInterval.endTime());
@@ -52,6 +51,7 @@ public class RestCallTimeIntervalDispatcher {
         LocalTime beginTime = LocalTime.parse(begin, startFormatter);
         LocalTime endTime = LocalTime.parse(end, endFormatter);
         LocalTime now = ZonedDateTime.now(ZoneId.of(zoneId)).toLocalTime();;
+        // LocalTime now = LocalTime.of(4, 0); // 04:00
         return new TimeInterval(beginTime, endTime, now);
     }
 
