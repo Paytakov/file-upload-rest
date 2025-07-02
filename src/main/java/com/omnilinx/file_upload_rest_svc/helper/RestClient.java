@@ -1,6 +1,7 @@
 package com.omnilinx.file_upload_rest_svc.helper;
 
-import com.omnilinx.file_upload_rest_svc.model.PlayerDto;
+import com.omnilinx.file_upload_rest_svc.exception.PlayerSendingException;
+import com.omnilinx.file_upload_rest_svc.model.dto.PlayerDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -26,14 +27,13 @@ public class RestClient {
     }
 
     public void send(List<PlayerDto> players) {
-        // TODO: Use Schedule for more control
         if (timeIntervalDispatcher.isWithinAllowedTimeInterval()) {
             try {
                 log.info("Sending players info to mock server: {}", url);
                 restTemplate.postForEntity(url, players, Void.class);
             } catch (Exception e) {
-                 log.error("Failed to send players to mock server", e);
-                 throw new RuntimeException("REST call to mock server failed", e);
+                 log.error("Failed to send players data to mock server", e);
+                 throw new PlayerSendingException("REST call to mock server failed", e);
             }
         } else {
             log.warn("Skipping sending data to remote server — current time is outside allowed time window.");

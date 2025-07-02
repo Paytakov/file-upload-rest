@@ -1,7 +1,7 @@
 package com.omnilinx.file_upload_rest_svc.util;
 
-import com.omnilinx.file_upload_rest_svc.model.Player;
-import com.omnilinx.file_upload_rest_svc.model.PlayerDto;
+import com.omnilinx.file_upload_rest_svc.model.entity.Player;
+import com.omnilinx.file_upload_rest_svc.model.dto.PlayerDto;
 import com.omnilinx.file_upload_rest_svc.model.dto.FileUploadResponseDto;
 import java.util.UUID;
 

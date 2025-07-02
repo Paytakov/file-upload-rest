@@ -1,6 +1,6 @@
 package com.omnilinx.file_upload_rest_svc.rabbit;
 
-import com.omnilinx.file_upload_rest_svc.model.Player;
+import com.omnilinx.file_upload_rest_svc.model.entity.Player;
 import com.omnilinx.file_upload_rest_svc.model.dto.FileUploadResponseDto;
 import com.omnilinx.file_upload_rest_svc.repository.PlayerRepository;
 import org.awaitility.Awaitility;
