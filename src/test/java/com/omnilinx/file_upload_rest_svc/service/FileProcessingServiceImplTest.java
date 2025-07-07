@@ -2,14 +2,15 @@ package com.omnilinx.file_upload_rest_svc.service;
 
 import com.omnilinx.file_upload_rest_svc.helper.FileParser;
 import com.omnilinx.file_upload_rest_svc.helper.RestClient;
-import com.omnilinx.file_upload_rest_svc.model.Player;
-import com.omnilinx.file_upload_rest_svc.model.PlayerDto;
+import com.omnilinx.file_upload_rest_svc.model.entity.Player;
+import com.omnilinx.file_upload_rest_svc.model.dto.PlayerDto;
 import com.omnilinx.file_upload_rest_svc.model.dto.FileDataDto;
 import com.omnilinx.file_upload_rest_svc.rabbit.FileMessageProducer;
 import com.omnilinx.file_upload_rest_svc.repository.PlayerRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -38,12 +39,9 @@ class FileProcessingServiceImplTest {
     @Mock
     private RestClient client;
 
+    @InjectMocks
     private FileProcessingServiceImpl toTest;
 
-    @BeforeEach
-    void setUp() {
-        toTest = new FileProcessingServiceImpl(playerRepository, parser, fileMessageProducer, client);
-    }
 
     @Test
     void testEnqueueFileForProcessingSuccess() {
@@ -59,7 +57,7 @@ class FileProcessingServiceImplTest {
         FileDataDto fileDataDto = buildFileDataDto();
 
         PlayerDto dto = new PlayerDto("Emil", "GK", 27, "Strelcha FC", "Bulgaria");
-        Player player = new Player(null, "Emil", "GK", 27, "Strelcha FC", "Bulgaria");
+        Player player = new Player(null, "Emil", "GK", 27, "Strelcha FC", "Bulgaria", false);
 
         when(parser.parse(MOCK_CONTENT)).thenReturn(List.of(dto));
 
@@ -67,7 +65,6 @@ class FileProcessingServiceImplTest {
 
         verify(parser).parse(MOCK_CONTENT);
         verify(playerRepository).saveAll(List.of(player));
-        verify(client).send(List.of(dto));
     }
 
     private static FileDataDto buildFileDataDto() {

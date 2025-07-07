@@ -1,10 +1,10 @@
 package com.omnilinx.file_upload_rest_svc.helper;
 
-import com.omnilinx.file_upload_rest_svc.model.PlayerDto;
+import com.omnilinx.file_upload_rest_svc.exception.PlayerSendingException;
+import com.omnilinx.file_upload_rest_svc.model.dto.PlayerDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.client.RestClientException;
@@ -58,7 +58,7 @@ class RestClientTest {
         when(restTemplate.postForEntity(eq(TEST_URL), eq(PLAYER_DTO_LIST), eq(Void.class)))
                 .thenThrow(new RestClientException("Simulated error"));
 
-        assertThrows(RuntimeException.class, () -> toTest.send(PLAYER_DTO_LIST));
+        assertThrows(PlayerSendingException.class, () -> toTest.send(PLAYER_DTO_LIST));
         verify(restTemplate).postForEntity(eq(TEST_URL), eq(PLAYER_DTO_LIST), eq(Void.class));
     }
 

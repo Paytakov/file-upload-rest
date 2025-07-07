@@ -1,5 +1,6 @@
-package com.omnilinx.file_upload_rest_svc.model;
+package com.omnilinx.file_upload_rest_svc.model.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,12 +14,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name = "players")
-@Entity
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name = "players")
+@Entity
 public class Player {
 
     @Id
@@ -35,6 +37,8 @@ public class Player {
     private String team;
     @NotBlank
     private String country;
+    //@Column(name = "sent")
+    private boolean isSent = false;
 
 
 }

@@ -1,7 +1,6 @@
 package com.omnilinx.file_upload_rest_svc.helper;
 
-import com.omnilinx.file_upload_rest_svc.model.PlayerDto;
-import org.junit.jupiter.api.BeforeEach;
+import com.omnilinx.file_upload_rest_svc.model.dto.PlayerDto;
 import org.junit.jupiter.api.Test;
 
 import java.nio.charset.StandardCharsets;

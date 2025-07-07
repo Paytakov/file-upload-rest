@@ -1,4 +1,4 @@
-package com.omnilinx.file_upload_rest_svc.model;
+package com.omnilinx.file_upload_rest_svc.model.dto;
 
 
 import lombok.AllArgsConstructor;
